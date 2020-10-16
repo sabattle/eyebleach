@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>Join Eyebleach!</legend>
+            <div>
+                {{ form.username.label }}
+                {{ form.username }}
+            </div>
+            <div>
+                {{ form.email.label }}
+                {{ form.email }}
+            </div>
+            <div>
+                {{ form.password.label }}
+                {{ form.password }}
+            </div>
+            <div>
+                {{ form.password_confirm.label }}
+                {{ form.password_confirm }}
+            </div>
+            <div>
+                {{ form.submit }}
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <small>Already joined? Click <a href="{{ url_for('login')}}">here</a> to sign in!</small>
+    </div>
+{% endblock content %}
