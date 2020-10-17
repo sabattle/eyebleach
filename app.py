@@ -16,6 +16,11 @@ def home():
     image_url = res.json()['url']
     return render_template('index.html', image=image_url)
 
+# About route
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About')
+
 # Registration route
 @app.route('/register', methods=['GET', 'POST'])
 def register():

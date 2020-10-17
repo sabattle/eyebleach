@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bleach for Your Eyes</title>
+    {% if title %}
+        <title>Eyebleach - {{ title }} </title>
+    {% else %}
+        <title>Bleach for Your Eyes</title>
+    {% endif %}
 </head>
 <body>
     {% with messages = get_flashed_messages() %}
