@@ -8,7 +8,7 @@ class RegistrationForm(FlaskForm):
 
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
 
-    password_confirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
 
     submit = SubmitField('Sign Up')
 
