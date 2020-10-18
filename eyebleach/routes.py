@@ -1,12 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
+from flask import render_template, url_for, flash, redirect
+from eyebleach.forms import RegistrationForm, LoginForm
+from eyebleach import app
 import requests
-import os
-
-app = Flask(__name__)
-
-# Get key
-app.config['SECRET_KEY'] = os.environ['EYEBLEACH_SECRET_KEY']
 
 # Home route
 @app.route('/')
@@ -35,6 +30,3 @@ def register():
 def login():
     form = LoginForm()
     return render_template('login.html', form=form)
-
-if __name__ == '__main__':
-    app.run(debug=True)
