@@ -1,9 +1,27 @@
 from flask import Flask
-import os
+from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
+from eyebleach.config import Config
 
-app = Flask(__name__)
+mongo = PyMongo()
+bcrypt = Bcrypt()
 
-# Get key
-app.config['SECRET_KEY'] = os.environ['EYEBLEACH_SECRET_KEY']
+def create_app(config=Config):
 
-from eyebleach import routes  # noqa: E402, F401
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    mongo.init_app(app)
+    print(app.config)
+    mongo.cx.server_info()
+
+    bcrypt.init_app(app)
+
+    # Routes
+    from eyebleach.main.routes import main  # noqa: E402, F401
+    from eyebleach.user.routes import user  # noqa: E402, F401
+
+    app.register_blueprint(main)
+    app.register_blueprint(user)
+
+    return app

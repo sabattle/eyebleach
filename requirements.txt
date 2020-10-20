@@ -1,5 +1,7 @@
 flask
 flask-wtf
 email-validator
+Flask-PyMongo
+flask-bcrypt
 flake8
 requests
